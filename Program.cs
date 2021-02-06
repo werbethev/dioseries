@@ -1,9 +1,11 @@
-﻿using System;
+﻿using dioseries.Classes;
+using System;
 
 namespace dioseries
 {
     class Program
     {
+        private static SerieRepositorio repositorio = new SerieRepositorio();
         static void Main(string[] args)
         {
             var opcaoSelecionada = ObterOpcaoSelecionada();
@@ -13,7 +15,7 @@ namespace dioseries
                 switch (opcaoSelecionada)
                 {
                     case "1":
-                        //Listar();
+                        ListarSeries();
                         break;
                     case "2":
                         //Inserir();
@@ -38,6 +40,27 @@ namespace dioseries
                         break;
                 }
                 opcaoSelecionada = ObterOpcaoSelecionada();
+            }
+
+            Console.WriteLine("Obrigado por utilizar nossos serviços.");
+            Console.ReadLine();
+        }
+
+        public static void ListarSeries()
+        {
+            Console.WriteLine("Listar séries");
+
+            var lista = repositorio.Lista();
+
+            if (lista.Count == 0)
+            {
+                Console.WriteLine("Nenhuma série cadastrada.");
+                return;
+            }
+
+            foreach (var serie in lista)
+            {
+                Console.WriteLine("ID {0}: - {1}", serie.retornaId(), serie.retornaTitulo());
             }
         }
 
