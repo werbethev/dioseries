@@ -7,10 +7,11 @@ namespace dioseries.Classes
     {
         private int Ano { get;  set; }
         private string Descricao { get; set; }
-        private eGenero Genero{ get; set; }
+        private EGenero Genero{ get; set; }
         private string Titulo { get; set; }
+        public bool Excluido { get; set; }
 
-        public Serie(int id, eGenero genero, string titulo, string descricao, int ano)
+        public Serie(int id, EGenero genero, string titulo, string descricao, int ano)
         {
             Id = id;
             Genero = genero;
@@ -26,7 +27,8 @@ namespace dioseries.Classes
             .AppendFormat("Ano de Inicio: ", Ano).AppendLine()
             .ToString();
 
-        public string retornaTitulo() => this.Titulo;
-        public int retornaId() => this.Id;
+        public string retornaTitulo() => Titulo;
+        public int retornaId() => Id;
+        public bool Excluir() => Excluido = true;
     }
 }

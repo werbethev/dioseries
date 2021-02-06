@@ -1,6 +1,6 @@
 ﻿namespace dioseries.Enum
 {
-    public enum eGenero
+    public enum EGenero
     {
         Acao = 1,
         Aventura,
