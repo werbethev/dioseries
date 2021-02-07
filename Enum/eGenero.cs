@@ -1,4 +1,4 @@
-﻿namespace dioseries.Enum
+﻿namespace dioseries
 {
     public enum EGenero
     {

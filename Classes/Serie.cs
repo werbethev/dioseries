@@ -1,5 +1,4 @@
-﻿using dioseries.Enum;
-using System.Text;
+﻿using System.Text;
 
 namespace dioseries.Classes
 {
@@ -25,6 +24,7 @@ namespace dioseries.Classes
             .AppendFormat("Titulo: ", Titulo).AppendLine()
             .AppendFormat("Descrição: ", Descricao).AppendLine()
             .AppendFormat("Ano de Inicio: ", Ano).AppendLine()
+            .AppendFormat("Excluido: ", Excluido ? "Sim" : "Não").AppendLine()
             .ToString();
 
         public string retornaTitulo() => Titulo;

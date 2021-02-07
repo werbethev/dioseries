@@ -12,19 +12,20 @@ namespace dioseries
 
             while (opcaoSelecionada != "X")
             {
+                Console.WriteLine();
                 switch (opcaoSelecionada)
                 {
                     case "1":
                         ListarSeries();
                         break;
                     case "2":
-                        //Inserir();
+                        InserirSerie();
                         break;
                     case "3":
-                        //Atualizar
+                        AtualizarSerie();
                         break;
                     case "4":
-                        //Excluir
+                        //ExcluirSerie();
                         break;
                     case "5":
                         //Visualizar
@@ -46,6 +47,36 @@ namespace dioseries
             Console.ReadLine();
         }
 
+        private static void AtualizarSerie()
+        {
+            Console.WriteLine("Digite o id da série: ");
+            int idSerie = int.Parse(Console.ReadLine());
+
+            foreach (int i in Enum.GetValues(typeof(EGenero)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(EGenero), i));
+            }
+            Console.WriteLine("Digite o gênero entre as opções acima: ");
+            int generoSelecionado = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o Título da Série: ");
+            var entradaTitulo = Console.ReadLine();
+
+            Console.WriteLine("Digite o Ano de Inicio Série: ");
+            var entradaAno = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a Descrição da Série: ");
+            var entradaDescricao = Console.ReadLine();
+
+            var serie = new Serie(id: idSerie,
+                                    genero: (EGenero)generoSelecionado,
+                                    titulo: entradaTitulo,
+                                    ano: entradaAno,
+                                    descricao: entradaDescricao);
+
+            repositorio.Atualiza(idSerie, serie);
+        }
+
         public static void ListarSeries()
         {
             Console.WriteLine("Listar séries");
@@ -62,6 +93,35 @@ namespace dioseries
             {
                 Console.WriteLine("ID {0}: - {1}", serie.retornaId(), serie.retornaTitulo());
             }
+        }
+
+        public static void InserirSerie()
+        {
+            Console.WriteLine("Inserir nova série");
+
+            foreach (int i in Enum.GetValues(typeof(EGenero)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(EGenero), i));
+            }
+            Console.WriteLine("Digite o gênero entre as opções acima: ");
+            int generoSelecionado = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite o Título da Série: ");
+            var entradaTitulo = Console.ReadLine();
+
+            Console.WriteLine("Digite o Ano de Inicio Série: ");
+            var entradaAno = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a Descrição da Série: ");
+            var entradaDescricao = Console.ReadLine();
+
+            var novaSerie = new Serie(id: repositorio.ProximoId(),
+                                      genero: (EGenero)generoSelecionado,
+                                      titulo: entradaTitulo,
+                                      ano: entradaAno,
+                                      descricao: entradaDescricao);
+
+            repositorio.Insere(novaSerie);
         }
 
         private static string ObterOpcaoSelecionada()
