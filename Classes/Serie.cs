@@ -8,7 +8,7 @@ namespace dioseries.Classes
         private string Descricao { get; set; }
         private EGenero Genero{ get; set; }
         private string Titulo { get; set; }
-        public bool Excluido { get; set; }
+        private bool Excluido { get; set; }
 
         public Serie(int id, EGenero genero, string titulo, string descricao, int ano)
         {
@@ -30,5 +30,6 @@ namespace dioseries.Classes
         public string retornaTitulo() => Titulo;
         public int retornaId() => Id;
         public bool Excluir() => Excluido = true;
+        public bool retornaExcluido() => Excluido;
     }
 }

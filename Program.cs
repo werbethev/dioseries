@@ -25,10 +25,10 @@ namespace dioseries
                         AtualizarSerie();
                         break;
                     case "4":
-                        //ExcluirSerie();
+                        ExcluirSerie();
                         break;
                     case "5":
-                        //Visualizar
+                        VisualizarSerie();
                         break;
                     case "C":
                         Console.Clear();
@@ -45,6 +45,24 @@ namespace dioseries
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
             Console.ReadLine();
+        }
+
+        private static void VisualizarSerie()
+        {
+            Console.WriteLine("Digite o id da série: ");
+            int idSerie = int.Parse(Console.ReadLine());
+
+            var serie = repositorio.RetornaPorId(idSerie);
+
+            Console.WriteLine(serie);
+        }
+
+        private static void ExcluirSerie()
+        {
+            Console.WriteLine("Digite o id da série: ");
+            int idSerie = int.Parse(Console.ReadLine());
+
+            repositorio.Exclui(idSerie);
         }
 
         private static void AtualizarSerie()
@@ -91,7 +109,8 @@ namespace dioseries
 
             foreach (var serie in lista)
             {
-                Console.WriteLine("ID {0}: - {1}", serie.retornaId(), serie.retornaTitulo());
+                var excluido = serie.retornaExcluido();
+                Console.WriteLine("ID {0}: - {1} - {2}", serie.retornaId(), serie.retornaTitulo(), excluido ? "*Excluido*" : "");
             }
         }
 
