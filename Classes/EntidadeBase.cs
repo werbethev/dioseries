@@ -6,7 +6,7 @@ namespace dioseries.Classes
         protected bool Excluido { get; set; }
 
         public void Excluir() => this.Excluido = true;
-        public int RetornaId() => Id;
         public bool RetornaExcluido() => Excluido;
+        public int RetornaId() => Id;
     }
 }

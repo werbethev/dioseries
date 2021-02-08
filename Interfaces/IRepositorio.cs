@@ -5,11 +5,11 @@ namespace dioseries.Interfaces
 {
     public interface IRepositorio<T> where T : EntidadeBase
     {
-        List<T> Lista();
-        T RetornaPorId(int id);
-        void Inserir(T entidade);
-        void Excluir(int id);
         void Atualizar(T entidade);
+        void Excluir(int id);
+        void Inserir(T entidade);
+        List<T> Lista();
         int ProximoId();
+        T RetornaPorId(int id);
     }
 }

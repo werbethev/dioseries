@@ -17,6 +17,7 @@ namespace dioseries.Classes
             Descricao = descricao;
             Ano = ano;
         }
+        public string retornaTitulo() => Titulo;
 
         public override string ToString() => new StringBuilder()
             .AppendFormat("Gênero: ", Genero).AppendLine()
@@ -26,6 +27,5 @@ namespace dioseries.Classes
             .AppendFormat("Excluido: ", Excluido ? "Sim" : "Não").AppendLine()
             .ToString();
 
-        public string retornaTitulo() => Titulo;
     }
 }
