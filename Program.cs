@@ -109,8 +109,8 @@ namespace dioseries
 
             foreach (var serie in lista)
             {
-                var excluido = serie.retornaExcluido();
-                Console.WriteLine("ID {0}: - {1} - {2}", serie.retornaId(), serie.retornaTitulo(), excluido ? "*Excluido*" : "");
+                var excluido = serie.RetornaExcluido();
+                Console.WriteLine("ID {0}: - {1} {2}", serie.RetornaId(), serie.retornaTitulo(), excluido ? " - *Excluido*" : "");
             }
         }
 
