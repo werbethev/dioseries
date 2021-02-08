@@ -1,5 +1,4 @@
 ﻿using dioseries.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace dioseries.Classes
@@ -12,15 +11,15 @@ namespace dioseries.Classes
             listaSerie = new List<Serie>();
         }
 
-        public void Atualiza(int id, Serie serie)
+        public void Atualizar(Serie serie)
         {
-            if (serie != null)
-                listaSerie[id] = serie;
+            if (serie != null && serie.Id >= 0)
+                listaSerie[serie.Id] = serie;
         }
 
-        public void Exclui(int id) => listaSerie?[id]?.Excluir();
+        public void Excluir(int id) => listaSerie?[id]?.Excluir();
 
-        public void Insere(Serie serie)
+        public void Inserir(Serie serie)
         {
             if (serie != null)
                 listaSerie.Add(serie);

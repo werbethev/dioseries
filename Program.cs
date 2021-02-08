@@ -62,7 +62,7 @@ namespace dioseries
             Console.WriteLine("Digite o id da série: ");
             int idSerie = int.Parse(Console.ReadLine());
 
-            repositorio.Exclui(idSerie);
+            repositorio.Excluir(idSerie);
         }
 
         private static void AtualizarSerie()
@@ -92,7 +92,7 @@ namespace dioseries
                                     ano: entradaAno,
                                     descricao: entradaDescricao);
 
-            repositorio.Atualiza(idSerie, serie);
+            repositorio.Atualizar(serie);
         }
 
         public static void ListarSeries()
@@ -140,7 +140,7 @@ namespace dioseries
                                       ano: entradaAno,
                                       descricao: entradaDescricao);
 
-            repositorio.Insere(novaSerie);
+            repositorio.Inserir(novaSerie);
         }
 
         private static string ObterOpcaoSelecionada()
