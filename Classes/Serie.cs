@@ -9,7 +9,6 @@ namespace dioseries.Classes
         private string Descricao { get; set; }
         private EGenero Genero{ get; set; }
         private string Titulo { get; set; }
-        public const string NomeEntidadeMenu = "série";
 
         public Serie(int id, EGenero genero, string titulo, string descricao, int ano)
         {
