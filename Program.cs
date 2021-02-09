@@ -49,26 +49,19 @@ namespace dioseries
 
         private static void VisualizarSerie()
         {
-            Console.WriteLine("Digite o id da série: ");
-            int idSerie = int.Parse(Console.ReadLine());
-
-            var serie = repositorio.RetornaPorId(idSerie);
-
-            Console.WriteLine(serie);
+            int idSerie = MenuConsole.PerguntarId(Serie.NomeEntidadeMenu);
+            Console.WriteLine(repositorio.RetornaPorId(idSerie));
         }
 
         private static void ExcluirSerie()
         {
-            Console.WriteLine("Digite o id da série: ");
-            int idSerie = int.Parse(Console.ReadLine());
-
+            int idSerie = MenuConsole.PerguntarId(Serie.NomeEntidadeMenu);
             repositorio.Excluir(idSerie);
         }
 
         private static void AtualizarSerie()
         {
-            Console.WriteLine("Digite o id da série: ");
-            int idSerie = int.Parse(Console.ReadLine());
+            int idSerie = MenuConsole.PerguntarId(Serie.NomeEntidadeMenu);
 
             foreach (int i in Enum.GetValues(typeof(EGenero)))
             {
