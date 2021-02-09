@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dioseries.Classes
+namespace dioseries.Classes.Menu
 {
     public static class MenuConsole
     {

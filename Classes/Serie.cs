@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace dioseries.Classes
 {
@@ -18,7 +19,8 @@ namespace dioseries.Classes
             Descricao = descricao;
             Ano = ano;
         }
-        public string retornaTitulo() => Titulo;
+
+        public string RetornaTitulo() => Titulo;
 
         public override string ToString() => new StringBuilder()
             .AppendFormat("Gênero: ", Genero).AppendLine()

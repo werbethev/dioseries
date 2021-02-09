@@ -1,4 +1,5 @@
 ﻿using dioseries.Classes;
+using dioseries.Classes.Menu;
 using System;
 
 namespace dioseries
@@ -103,7 +104,7 @@ namespace dioseries
             foreach (var serie in lista)
             {
                 var excluido = serie.RetornaExcluido();
-                Console.WriteLine("ID {0}: - {1} {2}", serie.RetornaId(), serie.retornaTitulo(), excluido ? " - *Excluido*" : "");
+                Console.WriteLine("ID {0}: - {1} {2}", serie.RetornaId(), serie.RetornaTitulo(), excluido ? " - *Excluido*" : "");
             }
         }
 
