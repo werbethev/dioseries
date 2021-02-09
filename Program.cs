@@ -5,10 +5,11 @@ namespace dioseries
 {
     class Program
     {
+        private static SerieMenu serieMenu = new SerieMenu();
         
         static void Main(string[] args)
         {
-            SerieMenu.MostrarMenuPrincipal();
+            serieMenu.MostrarMenuPrincipal();
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
             Console.ReadLine();

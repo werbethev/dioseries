@@ -2,19 +2,11 @@
 
 namespace dioseries.Classes.Menu
 {
-    public class SerieMenu
+    public class SerieMenu : EntidadeMenuBase<Serie>
     {
-        public static SerieRepositorio repositorio = new SerieRepositorio();
-        public const string NomeEntidadeMenu = "série";
+        public SerieMenu(): base(new SerieRepositorio(), "Série") { }
 
-        private static void AtualizarSerie()
-        {
-            int idSerie = MenuConsole.PerguntarId(NomeEntidadeMenu);
-            Serie serie = CriarSerie(idSerie);
-            repositorio.Atualizar(serie);
-        }
-
-        private static Serie CriarSerie(int idSerie)
+        protected override Serie Criar(int id)
         {
             foreach (int i in Enum.GetValues(typeof(EGenero)))
             {
@@ -23,7 +15,7 @@ namespace dioseries.Classes.Menu
             Console.WriteLine("Digite o gênero entre as opções acima: ");
             int generoSelecionado = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Digite o Título da Série: ");
+            Console.WriteLine($"Digite o Título da Série: ");
             var entradaTitulo = Console.ReadLine();
 
             Console.WriteLine("Digite o Ano de Inicio Série: ");
@@ -32,44 +24,13 @@ namespace dioseries.Classes.Menu
             Console.WriteLine("Digite a Descrição da Série: ");
             var entradaDescricao = Console.ReadLine();
 
-            return new Serie(idSerie, (EGenero)generoSelecionado, entradaTitulo,
+            return new Serie(id, (EGenero)generoSelecionado, entradaTitulo,
                                     entradaDescricao, entradaAno);
         }
 
-        private static void ExcluirSerie()
+        public override void MostrarMenuPrincipal()
         {
-            int idSerie = MenuConsole.PerguntarId(NomeEntidadeMenu);
-            repositorio.Excluir(idSerie);
-        }
 
-        private static void InserirSerie()
-        {
-            Console.WriteLine("Inserir nova série");
-            var novaSerie = CriarSerie(repositorio.ProximoId());
-            repositorio.Inserir(novaSerie);
-        }
-
-        private static void ListarSeries()
-        {
-            Console.WriteLine("Listar séries");
-
-            var lista = repositorio.Lista();
-
-            if (lista.Count == 0)
-            {
-                Console.WriteLine("Nenhuma série cadastrada.");
-                return;
-            }
-
-            foreach (var serie in lista)
-            {
-                var excluido = serie.RetornaExcluido();
-                Console.WriteLine("ID {0}: - {1} {2}", serie.RetornaId(), serie.RetornaTitulo(), excluido ? " - *Excluido*" : "");
-            }
-        }
-
-        public static void MostrarMenuPrincipal()
-        {
             string opcaoSelecionada;
             do
             {
@@ -79,28 +40,26 @@ namespace dioseries.Classes.Menu
                 switch (opcaoSelecionada)
                 {
                     case "1":
-                        ListarSeries();
+                        Listar();
                         break;
                     case "2":
-                        InserirSerie();
+                        Inserir();
                         break;
                     case "3":
-                        AtualizarSerie();
+                        Atualizar();
                         break;
                     case "4":
-                        ExcluirSerie();
+                        Excluir();
                         break;
                     case "5":
-                        VisualizarSerie();
+                        Visualizar();
                         break;
                     case "C":
                         Console.Clear();
                         break;
 
                     default:
-                        Console.Clear();
-                        Console.WriteLine("Opção Incorreta!");
-                        Console.WriteLine("Tente Novamente!");
+                        MenuConsole.MostrarOpcaoIncorreta();
                         break;
                 }
 
@@ -108,7 +67,7 @@ namespace dioseries.Classes.Menu
             } while (opcaoSelecionada != "X");
         }
 
-        private static string ObterOpcaoSelecionada()
+        private string ObterOpcaoSelecionada()
         {
             Console.WriteLine();
             Console.WriteLine("DIO Séries a seu dispor!!!");
@@ -124,12 +83,6 @@ namespace dioseries.Classes.Menu
             Console.WriteLine();
 
             return Console.ReadLine().ToUpper();
-        }
-
-        private static void VisualizarSerie()
-        {
-            int idSerie = MenuConsole.PerguntarId(NomeEntidadeMenu);
-            Console.WriteLine(repositorio.RetornaPorId(idSerie));
         }
     }
 }

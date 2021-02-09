@@ -7,6 +7,6 @@ namespace dioseries.Classes
 
         public void Excluir() => this.Excluido = true;
         public bool RetornaExcluido() => Excluido;
-        public int RetornaId() => Id;
+        public abstract string RetornaDescricaoMenu();
     }
 }

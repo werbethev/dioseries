@@ -18,15 +18,14 @@ namespace dioseries.Classes
             Ano = ano;
         }
 
-        public string RetornaTitulo() => Titulo;
-
         public override string ToString() => new StringBuilder()
-            .AppendFormat("Gênero: ", Genero).AppendLine()
-            .AppendFormat("Titulo: ", Titulo).AppendLine()
-            .AppendFormat("Descrição: ", Descricao).AppendLine()
-            .AppendFormat("Ano de Inicio: ", Ano).AppendLine()
-            .AppendFormat("Excluido: ", Excluido ? "Sim" : "Não").AppendLine()
+            .AppendLine($"Gênero: { Genero }")
+            .AppendLine($"Titulo: { Titulo }")
+            .AppendLine($"Descrição: { Descricao }")
+            .AppendLine($"Ano de Inicio: { Ano }")
+            .AppendLine($"Excluido: { (Excluido ? "Sim" : "Não") }")
             .ToString();
 
+        public override string RetornaDescricaoMenu() => Titulo;
     }
 }
