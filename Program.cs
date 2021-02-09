@@ -9,10 +9,11 @@ namespace dioseries
         
         static void Main(string[] args)
         {
-            var opcaoSelecionada = SerieMenu.ObterOpcaoSelecionada();
-
-            while (opcaoSelecionada != "X")
+            string opcaoSelecionada;
+            do
             {
+                opcaoSelecionada = SerieMenu.ObterOpcaoSelecionada();
+
                 Console.WriteLine();
                 switch (opcaoSelecionada)
                 {
@@ -41,8 +42,9 @@ namespace dioseries
                         Console.WriteLine("Tente Novamente!");
                         break;
                 }
-                opcaoSelecionada = SerieMenu.ObterOpcaoSelecionada();
-            }
+
+
+            } while (opcaoSelecionada != "X");
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
             Console.ReadLine();
