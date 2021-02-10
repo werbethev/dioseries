@@ -2,11 +2,11 @@
 
 namespace dioseries.Classes.Menu
 {
-    public class SerieMenu : EntidadeMenuBase<Serie>
+    public class FilmeMenu : EntidadeMenuBase<Filme>
     {
-        public SerieMenu(): base(new SerieRepositorio(), "Série") { }
+        public FilmeMenu() : base(new FilmeRepositorio(), "Filme") { }
 
-        protected override Serie Criar(int id)
+        protected override Filme Criar(int id)
         {
             foreach (int i in Enum.GetValues(typeof(EGenero)))
             {
@@ -15,22 +15,23 @@ namespace dioseries.Classes.Menu
             Console.WriteLine("Digite o gênero entre as opções acima: ");
             int generoSelecionado = int.Parse(Console.ReadLine());
 
-            Console.WriteLine($"Digite o Título da Série: ");
+            Console.WriteLine($"Digite o Título do Filme: ");
             var entradaTitulo = Console.ReadLine();
 
-            Console.WriteLine("Digite o Ano de Inicio Série: ");
+            Console.WriteLine("Digite o Ano de Inicio Filme: ");
             var entradaAno = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Digite a Descrição da Série: ");
+            Console.WriteLine("Digite a Descrição do Filme: ");
             var entradaDescricao = Console.ReadLine();
 
-            return new Serie(id, (EGenero)generoSelecionado, entradaTitulo,
-                                    entradaDescricao, entradaAno);
+            Console.WriteLine("Digite a Duração do Filme: ");
+            var entradaDuracao = Convert.ToInt32(Console.ReadLine());
+
+            return new Filme(id, (EGenero)generoSelecionado, entradaDescricao, entradaDuracao, entradaTitulo, entradaAno);
         }
 
         public override void MostrarMenuPrincipal()
         {
-
             string opcaoSelecionada;
             do
             {
@@ -72,7 +73,7 @@ namespace dioseries.Classes.Menu
         private string ObterOpcaoSelecionada()
         {
             Console.WriteLine();
-            Console.WriteLine("DIO Cadastro Séries a seu dispor!!!");
+            Console.WriteLine("DIO Cadastro Filmes a seu dispor!!!");
             Console.WriteLine("Informe a opção desejada: ");
 
             Console.WriteLine("1 - Listar");
@@ -86,5 +87,6 @@ namespace dioseries.Classes.Menu
 
             return Console.ReadLine().ToUpper();
         }
+
     }
 }

@@ -1,7 +1,4 @@
 ﻿namespace dioseries.Classes
 {
-    public class SerieRepositorio : RepositorioBase<Serie>
-    {
-
-    }
+    public class SerieRepositorio : RepositorioBase<Serie> { }
 }
