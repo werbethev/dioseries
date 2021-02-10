@@ -16,8 +16,7 @@ namespace dioseries
                 Console.WriteLine("Digite a opção que deseja cadastrar:");
                 Console.WriteLine("1 - Serie");
                 Console.WriteLine("2 - Filme");
-                Console.WriteLine("C - Limpar Tela");
-                Console.WriteLine("X - Sair");
+                MenuConsole.OpcoesPadroesParaMenu();
                 opcao = Console.ReadLine().ToUpper();
 
                 switch (opcao)
@@ -30,19 +29,12 @@ namespace dioseries
                         filmeMenu.MostrarMenuPrincipal();
                         break;
 
-                    case "C":
-                        Console.Clear();
-                        break;
-
-                    case "X":
-                        break;
-
                     default:
-                        MenuConsole.MostrarOpcaoIncorreta();
+                        MenuConsole.ExecutarOpcoesPadroesParaMenu(opcao);
                         break;
                 }
 
-            } while (opcao != "X");
+            } while (opcao != MenuConsole.CaracterSair);
 
             Console.WriteLine("Obrigado por utilizar nossos serviços.");
             Console.ReadLine();

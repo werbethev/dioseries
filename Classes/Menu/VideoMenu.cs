@@ -36,25 +36,19 @@ namespace dioseries.Classes.Menu
                     case "5":
                         Visualizar();
                         break;
-                    case "C":
-                        Console.Clear();
-                        break;
-                    case "X":
-                        break;
-
                     default:
-                        MenuConsole.MostrarOpcaoIncorreta();
+                        MenuConsole.ExecutarOpcoesPadroesParaMenu(opcaoSelecionada);
                         break;
                 }
 
 
-            } while (opcaoSelecionada != "X");
+            } while (opcaoSelecionada !=  MenuConsole.CaracterSair);
         }
 
-        private static string ObterOpcaoSelecionada()
+        private string ObterOpcaoSelecionada()
         {
             Console.WriteLine();
-            Console.WriteLine("DIO Cadastro Séries a seu dispor!!!");
+            Console.WriteLine($"DIO Cadastro {nomeDaEntidadeNoMenu} a seu dispor!!!");
             Console.WriteLine("Informe a opção desejada: ");
 
             Console.WriteLine("1 - Listar");
@@ -62,9 +56,7 @@ namespace dioseries.Classes.Menu
             Console.WriteLine("3 - Atualizar");
             Console.WriteLine("4 - Excluir");
             Console.WriteLine("5 - Visualizar");
-            Console.WriteLine("C - Limpar Tela");
-            Console.WriteLine("X - Sair");
-            Console.WriteLine();
+            MenuConsole.OpcoesPadroesParaMenu();
 
             return Console.ReadLine().ToUpper();
         }
