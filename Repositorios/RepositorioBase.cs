@@ -1,7 +1,7 @@
 ﻿using dioseries.Interfaces;
 using System.Collections.Generic;
 
-namespace dioseries.Classes
+namespace dioseries.Classes.Repositorios
 {
     public abstract class RepositorioBase<TEntidade> : IRepositorio<TEntidade> where TEntidade : EntidadeBase
     {
