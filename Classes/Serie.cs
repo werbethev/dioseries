@@ -1,31 +1,17 @@
-﻿using System.Text;
-
-namespace dioseries.Classes
+﻿namespace dioseries.Classes
 {
-    public class Serie : EntidadeBase
+    public class Serie : Video
     {
-        private int Ano { get;  set; }
-        private string Descricao { get; set; }
-        private EGenero Genero{ get; set; }
-        private string Titulo { get; set; }
+        private int QuantTemporadas { get; set; }
 
-        public Serie(int id, EGenero genero, string titulo, string descricao, int ano)
+        public Serie(int id, EGenero genero, string titulo, string descricao, int ano, int quantTemporadas)
+            : base(id, genero, titulo, descricao, ano)
         {
-            Id = id;
-            Genero = genero;
-            Titulo = titulo;
-            Descricao = descricao;
-            Ano = ano;
+            QuantTemporadas = quantTemporadas;
         }
 
-        public override string ToString() => new StringBuilder()
-            .AppendLine($"Gênero: { Genero }")
-            .AppendLine($"Titulo: { Titulo }")
-            .AppendLine($"Descrição: { Descricao }")
-            .AppendLine($"Ano de Inicio: { Ano }")
-            .AppendLine($"Excluido: { (Excluido ? "Sim" : "Não") }")
-            .ToString();
+        public override string RetornaDescricaoMenu() => $"{Titulo} - {QuantTemporadas} temporadas";
 
-        public override string RetornaDescricaoMenu() => Titulo;
+        public override string ToString() => ToString($"Temporadas: {QuantTemporadas}");
     }
 }

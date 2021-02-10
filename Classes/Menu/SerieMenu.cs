@@ -25,8 +25,11 @@ namespace dioseries.Classes.Menu
             Console.WriteLine("Digite a Descrição da Série: ");
             var entradaDescricao = Console.ReadLine();
 
+            Console.WriteLine("Digite a quantidade de temporadas da Série: ");
+            var entradaQuantTemporada = Convert.ToInt32(Console.ReadLine());
+
             return new Serie(id, (EGenero)generoSelecionado, entradaTitulo,
-                                    entradaDescricao, entradaAno);
+                                    entradaDescricao, entradaAno, entradaQuantTemporada);
         }
 
         public override void MostrarMenuPrincipal()
